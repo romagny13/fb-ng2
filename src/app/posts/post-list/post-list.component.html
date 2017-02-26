@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-2 pull-right">
+      <label>Filter by category</label>
+      <select class="form-control" (change)="filterByCategory(filteredCategory.value)" #filteredCategory>
+      <option value="none">Select</option>
+      <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+  </select>
+  </div>
+</div>
+<hr>
+<h1>Posts</h1>
+<hr>
+<div>
+  <a [routerLink]="['/posts/new']" class="btn btn-primary">Add a new post</a>
+</div>
+<article *ngFor="let post of posts">
+  <header class="entry-header">
+    <h2><a [routerLink]="['/posts/', post.$key]">{{ post.title }}</a></h2>
+  </header>
+  <div class="entry-content">{{ post.content }}</div>
+</article>
